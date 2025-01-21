@@ -1,59 +1,36 @@
-import React, {useState} from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import React from 'react';
+import LifecylceComponent from './src/components/ClassComponent';
+import {StyleSheet, View} from 'react-native';
+import FunctionalComponent from './src/components/FunctionalComponent';
+import BasicComponents from './src/components/BasicComponents';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import Hooks from './src/Hooks/Hooks';
+import Javascript from './src/JS/Javascript';
+import FinalHomeWork from './src/FinalHomeWork';
 
-const DeepCopyShallowCopy = () => {
-  const [person, setPerson] = useState({
-    name: 'John',
-    address: {city: 'New York', zip: '10001'},
-  });
-
-  const handleShallowCopy = () => {
-    console.log('--- Shallow Copy ---');
-    const shallowCopy = {...person}; // Shallow copy using spread operator
-    console.log('Before modification:', shallowCopy);
-
-    shallowCopy.address.city = 'Los Angeles'; // Modify the nested property
-    console.log('After modification (Shallow Copy):', shallowCopy);
-    console.log('Original object (Affected by shallow copy):', person);
-
-    setPerson(shallowCopy); // Updates the state
-  };
-
-  const handleDeepCopy = () => {
-    console.log('--- Deep Copy ---');
-    const deepCopy = JSON.parse(JSON.stringify(person)); // Deep copy using JSON methods
-    console.log('Before modification:', deepCopy);
-
-    deepCopy.address.city = 'San Francisco'; // Modify the nested property
-    console.log('After modification (Deep Copy):', deepCopy);
-    console.log('Original object (Unaffected by deep copy):', person);
-
-    setPerson(deepCopy); // Updates the state
-  };
-
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Deep Copy vs Shallow Copy</Text>
-      <Text>Name: {person.name}</Text>
-      <Text>City: {person.address.city}</Text>
-      <Button title="Shallow Copy - Change City" onPress={handleShallowCopy} />
-      <Button title="Deep Copy - Change City" onPress={handleDeepCopy} />
-    </View>
+    <SafeAreaProvider>
+      <View style={styles.container}>
+        {/* <LifecylceComponent /> */}
+        {/* <FunctionalComponent /> */}
+        {/* <View style={styles.flex2} /> */}
+        {/* <BasicComponents /> */}
+        {/* <Hooks /> */}
+        {/* <Javascript /> */}
+        <FinalHomeWork />
+      </View>
+    </SafeAreaProvider>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
+    flexDirection: 'row',
   },
-  title: {
-    fontSize: 20,
-    marginBottom: 20,
-    fontWeight: 'bold',
+  flex2: {
+    backgroundColor: 'green',
+    flex: 2,
   },
 });
-
-export default DeepCopyShallowCopy;
+export default App;

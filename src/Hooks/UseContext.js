@@ -4,7 +4,7 @@ import {View, Text, Button, StyleSheet} from 'react-native';
 // Step 1: Create a Context
 const ThemeContext = createContext();
 
-const Use = () => {
+const UseContext = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Use;
+export default UseContext;
