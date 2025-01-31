@@ -15,35 +15,35 @@ import {
   Alert,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {useApiHook} from './useApiHook';
+// import {useApiHook} from './useApiHook';
 
 const FinalHomeWork = () => {
-  const {loading, data} = useApiHook();
+  // const {loading, data} = useApiHook();
 
-  // const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // const fetchData = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const res = await fetch('https://dummyjson.com/products');
-  //     const data = await res.json();
-  //     const modifiedData =
-  //       data?.products?.filter(product =>
-  //         product.tags.some(tag => tag.toLowerCase() === 'beauty'),
-  //       ) || [];
-  //     setData(modifiedData);
-  //   } catch (error) {
-  //     Alert.alert('There was an error');
-  //     console.log(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('https://dummyjson.com/products');
+      const data = await res.json();
+      const modifiedData =
+        data?.products?.filter(product =>
+          product.tags.some(tag => tag.toLowerCase() === 'beauty'),
+        ) || [];
+      setData(modifiedData);
+    } catch (error) {
+      Alert.alert('There was an error');
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const renderItemComponent = ({item}) => {
     return (
